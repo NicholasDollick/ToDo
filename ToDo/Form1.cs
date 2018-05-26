@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -44,9 +45,23 @@ namespace ToDo
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            if(todoList.Items.Count > 0) //this should also archive data to database, possible write to file with timestamp of completion?
+            if (todoList.Items.Count > 0) //this should also archive data to database, possible write to file with timestamp of completion?
             {
-                while (todoList.CheckedItems.Count > 0)
+                SQLiteCommand myCmd = new SQLiteCommand();
+                myCmd.Connection = databaseObject.myConnection;
+                myCmd.CommandType = CommandType.Text;
+                databaseObject.OpenConnection();
+                for (int i = 0; i < todoList.Items.Count; i++)
+                {
+                    myCmd.CommandText = "INSERT INTO tasks (task, date) VALUES (?, ?)";
+                    myCmd.Parameters.AddWithValue("@task", todoList.Items[i].ToString());
+                    myCmd.Parameters.AddWithValue("@date", DateTime.Today.ToString("MM/dd/yy"));
+                    myCmd.ExecuteNonQuery();
+                    myCmd.Parameters.Clear();
+                }
+                databaseObject.CloseConnection();
+
+                while (todoList.CheckedItems.Count > 0) //clear items checked as completed 
                     todoList.Items.RemoveAt(todoList.CheckedIndices[0]);
             }
         }

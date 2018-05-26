@@ -16,7 +16,7 @@ namespace ToDo
             if (!File.Exists("./database.sqlite"))
             {
                 string users = "CREATE TABLE \"users\"(\"username\" TEXT NOT NULL  check(typeof(\"username\") = 'text') , \"password\" TEXT NOT NULL check(typeof(\"password\") = 'text') )";
-                string tasks = "CREATE  TABLE \"main\".\"tasks\" (\"task\" TEXT check(typeof(\"task\") = 'text')  DEFAULT \" \", \"date\" TEXT check(typeof(\"date\") = 'text')  DEFAULT CURRENT_DATE)";
+                string tasks = "CREATE  TABLE \"main\".\"tasks\" (\"task\" TEXT check(typeof(\"task\") = 'text') , \"date\" TEXT check(typeof(\"date\") = 'text')  DEFAULT CURRENT_DATE)";
 
                 SQLiteConnection.CreateFile("database.sqlite");
                 myConnection.Open();
