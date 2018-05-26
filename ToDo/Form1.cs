@@ -16,5 +16,22 @@ namespace ToDo
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<String> test = new List<string>();
+
+            test.Add("one");
+            test.Add("two");
+            test.Add("three");
+            test.Add("four");
+            test.Add("red");
+            test.Add("blue");
+
+            foreach (string s in test)
+            {
+                todoList.Items.Add(s);
+            }
+        }
     }
 }
