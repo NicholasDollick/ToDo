@@ -119,8 +119,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.addToList);
             this.Controls.Add(this.todoList);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "ToDo List";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
