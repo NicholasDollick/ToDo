@@ -24,13 +24,19 @@ namespace ToDo
 
         private void button1_Click(object sender, EventArgs e) //items should be sent to databse upon being added to the list
         {
-
-            //test.Add(textBox1.Text);
-
             todoList.Items.Add(textBox1.Text);
-          
 
-            textBox1.Text = "Add a new task";
+            string query = "INSERT INTO tasks (task, date) VALUES (?, ?)";
+            SQLiteCommand myCmd = new SQLiteCommand(query, databaseObject.myConnection);
+        
+            databaseObject.OpenConnection();
+            myCmd.Parameters.AddWithValue("@task", textBox1.Text);
+            myCmd.Parameters.AddWithValue("@date", DateTime.Today.ToString("MM/dd/yy"));
+            myCmd.ExecuteNonQuery();
+            databaseObject.CloseConnection();
+
+
+            textBox1.Text = "Add a new task"; //resets textbox state
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
@@ -49,25 +55,12 @@ namespace ToDo
             DialogResult clearAll = MessageBox.Show("Do you want to clear all completed tasks?", "", MessageBoxButtons.YesNo);
 
             if (todoList.Items.Count > 0) //this should also archive data to database, possible write to file with timestamp of completion?
-            {
-                SQLiteCommand myCmd = new SQLiteCommand();
-                myCmd.Connection = databaseObject.myConnection;
-                myCmd.CommandType = CommandType.Text;
-                databaseObject.OpenConnection();
-                for (int i = 0; i < todoList.Items.Count; i++)
-                {
-                    myCmd.CommandText = "INSERT INTO tasks (task, date) VALUES (?, ?)";
-                    myCmd.Parameters.AddWithValue("@task", todoList.Items[i].ToString());
-                    myCmd.Parameters.AddWithValue("@date", DateTime.Today.ToString("MM/dd/yy"));
-                    myCmd.ExecuteNonQuery();
-                    myCmd.Parameters.Clear();
-                }
-                databaseObject.CloseConnection();
-
                 if(clearAll == DialogResult.Yes)
                     while (todoList.CheckedItems.Count > 0) //clear items checked as completed 
                         todoList.Items.RemoveAt(todoList.CheckedIndices[0]);
-            }
+            
+            // consider adding option to save completed tasks, maybe having font become a strike through
+            // might cause need to press update twice during a session, might look cleaner overall however
         }
 
         private void initializeList()
