@@ -55,9 +55,17 @@ namespace ToDo
             DialogResult clearAll = MessageBox.Show("Do you want to clear all completed tasks?", "", MessageBoxButtons.YesNo);
 
             if (todoList.Items.Count > 0) //this should also archive data to database, possible write to file with timestamp of completion?
-                if(clearAll == DialogResult.Yes)
+                if (clearAll == DialogResult.Yes)
                     while (todoList.CheckedItems.Count > 0) //clear items checked as completed 
+                    {
+                        string updateQuery = "DELETE FROM tasks WHERE task='"+ todoList.CheckedItems[0].ToString() +"'";
+
+                        SQLiteCommand cmd = new SQLiteCommand(updateQuery, databaseObject.myConnection);
+                        databaseObject.OpenConnection();
+                        cmd.ExecuteNonQuery();
+                        databaseObject.CloseConnection();
                         todoList.Items.RemoveAt(todoList.CheckedIndices[0]);
+                    }
             
             // consider adding option to save completed tasks, maybe having font become a strike through
             // might cause need to press update twice during a session, might look cleaner overall however
