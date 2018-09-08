@@ -22,6 +22,8 @@ namespace ToDo
             initializeList();
         }
 
+        //add a function to write to file when task was added to list, and when it was completed
+
         private void button1_Click(object sender, EventArgs e) //items should be sent to databse upon being added to the list
         {
             todoList.Items.Add(textBox1.Text);
