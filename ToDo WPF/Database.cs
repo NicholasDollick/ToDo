@@ -13,7 +13,7 @@ namespace ToDo_WPF
     {
         static void main(string [] args)
         {
-            var client = new MongoClient();
+            var client = new MongoClient(URI.getURI());
             var database = client.GetDatabase("startup");
             var collect = database.GetCollection<BsonDocument>("employee");
         }

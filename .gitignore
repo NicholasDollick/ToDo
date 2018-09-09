@@ -241,4 +241,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 
-ToDo WPF/URITest2.cs
+ToDo WPF/URI.cs
