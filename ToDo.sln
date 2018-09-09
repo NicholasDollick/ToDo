@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo", "ToDo\ToDo.csproj", "{D07B0C64-EC58-4807-8723-1CC9FF57E624}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo WPF", "ToDo WPF\ToDo WPF.csproj", "{473E8161-23BF-4EFF-8743-ABFFCE70C784}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{D07B0C64-EC58-4807-8723-1CC9FF57E624}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D07B0C64-EC58-4807-8723-1CC9FF57E624}.Release|x86.ActiveCfg = Release|x86
 		{D07B0C64-EC58-4807-8723-1CC9FF57E624}.Release|x86.Build.0 = Release|x86
+		{473E8161-23BF-4EFF-8743-ABFFCE70C784}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{473E8161-23BF-4EFF-8743-ABFFCE70C784}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{473E8161-23BF-4EFF-8743-ABFFCE70C784}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{473E8161-23BF-4EFF-8743-ABFFCE70C784}.Debug|x86.Build.0 = Debug|Any CPU
+		{473E8161-23BF-4EFF-8743-ABFFCE70C784}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{473E8161-23BF-4EFF-8743-ABFFCE70C784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{473E8161-23BF-4EFF-8743-ABFFCE70C784}.Release|x86.ActiveCfg = Release|Any CPU
+		{473E8161-23BF-4EFF-8743-ABFFCE70C784}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
